@@ -26,5 +26,9 @@ module.exports = (dataObject) => function TEMPLATE(content, options = {}, config
   console.log(`template: ${templateString}`);
   console.log(`options: ${JSON.stringify(options)}`);
 
+  options.getVar = (key) => {
+    return options.VARS[env][key]
+  };
+
   return template(templateString)(options);
 }
