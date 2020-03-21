@@ -3,7 +3,7 @@ const path = require('path');
 const process = require('process');
 const template = require('lodash.template');
 
-module.exports = (dataObject) => function TEMPLATE(content, options = {}, config) {
+module.exports = (dataObject) => function TEMPLATE(content, options, config) {
   // any options passed in with values of the form $variable will be expanded as
   // environment variables
   for (let [key, value] of Object.entries(options)) {
@@ -27,7 +27,9 @@ module.exports = (dataObject) => function TEMPLATE(content, options = {}, config
   console.log(`options: ${JSON.stringify(options)}`);
 
   options.getVar = (key) => {
-    return options.VARS[env][key]
+    console.log(`getVar("${key})`);
+    console.log(`dataObject: ${JSON.stringify(dataObject)}`);
+    return dataObject[options.env][key];
   };
 
   return template(templateString)(options);
