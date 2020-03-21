@@ -31,10 +31,18 @@ markdownMagic(markdownPath, config);
 
 ## Usage in markdown
 
-<!-- AUTO-GENERATED-CONTENT:START (TEMPLATE:src=./template.md) -->
-## hello world!
+<!-- AUTO-GENERATED-CONTENT:START (TEMPLATE:name=foobar&env=$DOCSBUILDENV) -->
+## hello <%= name %>!
+
+> This came from an environment variable: <%= env %>
+
+[badge repo](<%= vars.env[env]["badgeRepo"] %>)
 
 <!-- AUTO-GENERATED-CONTENT:END -->
 
 ## Options
-* **src** (required) - path to template, relative to the Markdown file
+
+* **src** (optional) - path to template, relative to the Markdown file. If this is not provided, the current content of
+  the markdown-magic block will be used.
+
+Any additional options provided will be passed to the lodash template.

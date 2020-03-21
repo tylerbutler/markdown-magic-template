@@ -3,7 +3,7 @@ const markdownMagic = require('markdown-magic');
 
 const config = {
   transforms: {
-    TEMPLATE: require('./index.js')({ name: 'world' }),
+    TEMPLATE: require('./index.js')({ vars: vars }),
   }
 }
 
