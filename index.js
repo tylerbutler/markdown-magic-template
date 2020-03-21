@@ -20,7 +20,11 @@ module.exports = (dataObject) => function TEMPLATE(content, options = {}, config
   if (options.src) {
     const filepath = path.resolve(path.dirname(config.originalPath), options.src);
     templateString = fs.readFileSync(filepath, 'utf8');
+    console.log(`template loaded from file: ${filepath}`);
   }
+
+  console.log(`template: ${templateString}`);
+  console.log(`options: ${JSON.stringify(options)}`);
 
   return template(templateString)(options);
 }
